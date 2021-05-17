@@ -4,11 +4,11 @@
 #include <ctime>;
 #include <string>;
 
-//в данном случае мы не используем пространство имен STD потому что все ломается к чертям и вывод идет через std::cout
+//РІ РґР°РЅРЅРѕРј СЃР»СѓС‡Р°Рµ РјС‹ РЅРµ РёСЃРїРѕР»СЊР·СѓРµРј РїСЂРѕСЃС‚СЂР°РЅСЃС‚РІРѕ РёРјРµРЅ STD РїРѕС‚РѕРјСѓ С‡С‚Рѕ РІСЃРµ Р»РѕРјР°РµС‚СЃСЏ Рє С‡РµСЂС‚СЏРј Рё РІС‹РІРѕРґ РёРґРµС‚ С‡РµСЂРµР· std::cout
 
 #pragma warning(disable:4996)
 
-// Перегрузки
+// РџРµСЂРµРіСЂСѓР·РєРё
 
 void end();
 void settings();
@@ -23,31 +23,31 @@ void generateFood();
 char getMapValue(int value);
 void setColor(char symbol, int color);
 
-// Настройки карты
+// РќР°СЃС‚СЂРѕР№РєРё РєР°СЂС‚С‹
 const int mapwidth = 20;
 const int mapheight = 20;
 const int size = mapwidth * mapheight;
 
-// Цвета разных символов
+// Р¦РІРµС‚Р° СЂР°Р·РЅС‹С… СЃРёРјРІРѕР»РѕРІ
 int colorWalls = 7;
 int colorSnake = 10;
 int colorFood = 4;
 
-// Объявление размера карты
+// РћР±СЉСЏРІР»РµРЅРёРµ СЂР°Р·РјРµСЂР° РєР°СЂС‚С‹
 int map[size];
 
-// Голова змеи
+// Р“РѕР»РѕРІР° Р·РјРµРё
 int headxpos;
 int headypos;
 int direction;
 
-// Количество еды или длинна тела змеи(один параметр на очки и на длинну тушки)
+// РљРѕР»РёС‡РµСЃС‚РІРѕ РµРґС‹ РёР»Рё РґР»РёРЅРЅР° С‚РµР»Р° Р·РјРµРё(РѕРґРёРЅ РїР°СЂР°РјРµС‚СЂ РЅР° РѕС‡РєРё Рё РЅР° РґР»РёРЅРЅСѓ С‚СѓС€РєРё)
 int food = 3;
 
-// Отслеживает идет ли игра
+// РћС‚СЃР»РµР¶РёРІР°РµС‚ РёРґРµС‚ Р»Рё РёРіСЂР°
 bool running;
 
-// ну мейн как мейн чего бубнить то (сюда впихнется интерфейс) 
+// РЅСѓ РјРµР№РЅ РєР°Рє РјРµР№РЅ С‡РµРіРѕ Р±СѓР±РЅРёС‚СЊ С‚Рѕ (СЃСЋРґР° РІРїРёС…РЅРµС‚СЃСЏ РёРЅС‚РµСЂС„РµР№СЃ) 
 int main()
 {
 	void* handle = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -57,7 +57,7 @@ int main()
 	SetConsoleCursorInfo(handle, &structCursorInfo);
 	int choise;
 	setlocale(LC_ALL, "Russian");
-	std::cout << "\t\t\t\tДОБРО ПОЖАЛОВАТЬ В ГЛАВНОЕ МЕНЮ\n\t\t[1]Начало игры\n\t\t[2]Настройки\n\t\t[3]Выход\n\t\t[*]Введите вариант ответа: ";
+	std::cout << "\t\t\t\tР”РћР‘Р Рћ РџРћР–РђР›РћР’РђРўР¬ Р’ Р“Р›РђР’РќРћР• РњР•РќР®\n\t\t[1]РќР°С‡Р°Р»Рѕ РёРіСЂС‹\n\t\t[2]РќР°СЃС‚СЂРѕР№РєРё\n\t\t[3]Р’С‹С…РѕРґ\n\t\t[*]Р’РІРµРґРёС‚Рµ РІР°СЂРёР°РЅС‚ РѕС‚РІРµС‚Р°: ";
 	std::cin >> choise;
 	switch (choise)
 	{
@@ -85,28 +85,28 @@ void settings() {
 	while (!isStop) {
 		system("CLS");
 		int choise;
-		std::cout << "\t\t\t\tДОБРО ПОЖАЛОВАТЬ В ГЛАВНОЕ МЕНЮ\n\t\t";
-		std::cout << "[1]Цвет стенки (" << colorWalls << ") ";
-		setColor('Ц',colorWalls); setColor('В', colorWalls); setColor('Е', colorWalls); setColor('Т', colorWalls);
-		std::cout << "\n\t\t[2]Цвет еды (" << colorFood << ") ";
-		setColor('Ц', colorFood); setColor('В', colorFood); setColor('Е', colorFood); setColor('Т', colorFood);
-		std::cout << "\n\t\t[3]Цвет змейки (" << colorSnake << ") ";
-		setColor('Ц', colorSnake); setColor('В', colorSnake); setColor('Е', colorSnake); setColor('Т', colorSnake);
-		std::cout << "\n\t\t[4]Выход\n\t\t[*]Введите вариант ответа: ";
+		std::cout << "\t\t\t\tР”РћР‘Р Рћ РџРћР–РђР›РћР’РђРўР¬ Р’ Р“Р›РђР’РќРћР• РњР•РќР®\n\t\t";
+		std::cout << "[1]Р¦РІРµС‚ СЃС‚РµРЅРєРё (" << colorWalls << ") ";
+		setColor('Р¦',colorWalls); setColor('Р’', colorWalls); setColor('Р•', colorWalls); setColor('Рў', colorWalls);
+		std::cout << "\n\t\t[2]Р¦РІРµС‚ РµРґС‹ (" << colorFood << ") ";
+		setColor('Р¦', colorFood); setColor('Р’', colorFood); setColor('Р•', colorFood); setColor('Рў', colorFood);
+		std::cout << "\n\t\t[3]Р¦РІРµС‚ Р·РјРµР№РєРё (" << colorSnake << ") ";
+		setColor('Р¦', colorSnake); setColor('Р’', colorSnake); setColor('Р•', colorSnake); setColor('Рў', colorSnake);
+		std::cout << "\n\t\t[4]Р’С‹С…РѕРґ\n\t\t[*]Р’РІРµРґРёС‚Рµ РІР°СЂРёР°РЅС‚ РѕС‚РІРµС‚Р°: ";
 		std::cin >> choise;
 		switch (choise) {
 		case 1:
-			std::cout << "\t\t[*]Выберите новый цвет (любое число):";
+			std::cout << "\t\t[*]Р’С‹Р±РµСЂРёС‚Рµ РЅРѕРІС‹Р№ С†РІРµС‚ (Р»СЋР±РѕРµ С‡РёСЃР»Рѕ):";
 			std::cin >> choise;
 			colorWalls = choise;
 			break;
 		case 2:
-			std::cout << "\t\t[*]Выберите новый цвет (любое число):";
+			std::cout << "\t\t[*]Р’С‹Р±РµСЂРёС‚Рµ РЅРѕРІС‹Р№ С†РІРµС‚ (Р»СЋР±РѕРµ С‡РёСЃР»Рѕ):";
 			std::cin >> choise;
 			colorFood = choise;
 			break;
 		case 3:
-			std::cout << "\t\t[*]Выберите новый цвет (любое число):";
+			std::cout << "\t\t[*]Р’С‹Р±РµСЂРёС‚Рµ РЅРѕРІС‹Р№ С†РІРµС‚ (Р»СЋР±РѕРµ С‡РёСЃР»Рѕ):";
 			std::cin >> choise;
 			colorSnake = choise;
 			break;
@@ -121,7 +121,7 @@ void settings() {
 
 void end() {
 	system("CLS");
-	// Сообщение о завершении игры(Позже вынести в отдельный метод!)
+	// РЎРѕРѕР±С‰РµРЅРёРµ Рѕ Р·Р°РІРµСЂС€РµРЅРёРё РёРіСЂС‹(РџРѕР·Р¶Рµ РІС‹РЅРµСЃС‚Рё РІ РѕС‚РґРµР»СЊРЅС‹Р№ РјРµС‚РѕРґ!)
 	std::cout << "\t\t!!!Game over!" << std::endl << "\t\tYour score is: " << food - 3;
 	for (int x = 0; x < mapwidth; ++x) {
 		for (int y = 0; y < mapheight; ++y) {
@@ -134,35 +134,35 @@ void end() {
 	_sleep(2000);
 	system("CLS");
 	main();
-	// Не дает закрыться консоли после окончания игры 
+	// РќРµ РґР°РµС‚ Р·Р°РєСЂС‹С‚СЊСЃСЏ РєРѕРЅСЃРѕР»Рё РїРѕСЃР»Рµ РѕРєРѕРЅС‡Р°РЅРёСЏ РёРіСЂС‹ 
 	//std::cin.ignore();
 }
 
-// Основные игровые фишки
+// РћСЃРЅРѕРІРЅС‹Рµ РёРіСЂРѕРІС‹Рµ С„РёС€РєРё
 void run()
 {
-	// Инициализация карты
+	// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РєР°СЂС‚С‹
 	initMap();
 	running = true;
 	while (running) {
 		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), { 0,0 });
-		// Если кнопка нажата
+		// Р•СЃР»Рё РєРЅРѕРїРєР° РЅР°Р¶Р°С‚Р°
 		if (kbhit()) {
 			changeDirection(getch());
 		}
-		//Обновление карты
+		//РћР±РЅРѕРІР»РµРЅРёРµ РєР°СЂС‚С‹
 		update();
-		//Чистилка как чистилка ничего особенного 
+		//Р§РёСЃС‚РёР»РєР° РєР°Рє С‡РёСЃС‚РёР»РєР° РЅРёС‡РµРіРѕ РѕСЃРѕР±РµРЅРЅРѕРіРѕ 
 		clearScreen();
-		//Вывод карты на экран
+		//Р’С‹РІРѕРґ РєР°СЂС‚С‹ РЅР° СЌРєСЂР°РЅ
 		printMap();
-		//Таймер на 0.04 секунды что бы была плавность
+		//РўР°Р№РјРµСЂ РЅР° 0.04 СЃРµРєСѓРЅРґС‹ С‡С‚Рѕ Р±С‹ Р±С‹Р»Р° РїР»Р°РІРЅРѕСЃС‚СЊ
 		_sleep(40/(food*0.2));
 	}
 	end();
 }
 
-// Управление головой змеи(Пока что работает только на английской раскладке)
+// РЈРїСЂР°РІР»РµРЅРёРµ РіРѕР»РѕРІРѕР№ Р·РјРµРё(РџРѕРєР° С‡С‚Рѕ СЂР°Р±РѕС‚Р°РµС‚ С‚РѕР»СЊРєРѕ РЅР° Р°РЅРіР»РёР№СЃРєРѕР№ СЂР°СЃРєР»Р°РґРєРµ)
 void changeDirection(char key) {
 	switch (key) {
 	case 'w':
@@ -180,13 +180,13 @@ void changeDirection(char key) {
 	}
 }
 
-// Реализация движения головы
+// Р РµР°Р»РёР·Р°С†РёСЏ РґРІРёР¶РµРЅРёСЏ РіРѕР»РѕРІС‹
 void move(int dx, int dy) {
-	// определяет новое положение головы
+	// РѕРїСЂРµРґРµР»СЏРµС‚ РЅРѕРІРѕРµ РїРѕР»РѕР¶РµРЅРёРµ РіРѕР»РѕРІС‹
 	int newx = headxpos + dx;
 	int newy = headypos + dy;
 
-	// Думает есть ли еда
+	// Р”СѓРјР°РµС‚ РµСЃС‚СЊ Р»Рё РµРґР°
 	if (map[newx + newy * mapwidth] == -2) {
 		food++;
 		generateFood();
@@ -195,18 +195,18 @@ void move(int dx, int dy) {
 		running = false;
 	}
 
-	// Движение головы на новую позицию
+	// Р”РІРёР¶РµРЅРёРµ РіРѕР»РѕРІС‹ РЅР° РЅРѕРІСѓСЋ РїРѕР·РёС†РёСЋ
 	headxpos = newx;
 	headypos = newy;
 	map[headxpos + headypos * mapwidth] = food + 1;
 }
 
-// Метод отчистки экрана(Нафига? а потому что можем)))0) ) 
+// РњРµС‚РѕРґ РѕС‚С‡РёСЃС‚РєРё СЌРєСЂР°РЅР°(РќР°С„РёРіР°? Р° РїРѕС‚РѕРјСѓ С‡С‚Рѕ РјРѕР¶РµРј)))0) ) 
 void clearScreen() {
 	system("cls");
 }
 
-// Генирация еды
+// Р“РµРЅРёСЂР°С†РёСЏ РµРґС‹
 void generateFood() {
 	int x = 0;
 	int y = 0;
@@ -214,13 +214,13 @@ void generateFood() {
 		x = rand() % (mapwidth - 2) + 1;
 		y = rand() % (mapheight - 2) + 1;
 
-		//Если клетка занята, повторить до победного
+		//Р•СЃР»Рё РєР»РµС‚РєР° Р·Р°РЅСЏС‚Р°, РїРѕРІС‚РѕСЂРёС‚СЊ РґРѕ РїРѕР±РµРґРЅРѕРіРѕ
 	} while (map[x + y * mapwidth] != 0);
-	//Размещение еды
+	//Р Р°Р·РјРµС‰РµРЅРёРµ РµРґС‹
 	map[x + y * mapwidth] = -2;
 }
 
-// Обновление карты
+// РћР±РЅРѕРІР»РµРЅРёРµ РєР°СЂС‚С‹
 void update() {
 	switch (direction) {
 	case 0: move(-1, 0);
@@ -238,30 +238,30 @@ void update() {
 	}
 }
 
-// Инициализация карты
+// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РєР°СЂС‚С‹
 void initMap()
 {
-	// Размещение головы змеи в центре
+	// Р Р°Р·РјРµС‰РµРЅРёРµ РіРѕР»РѕРІС‹ Р·РјРµРё РІ С†РµРЅС‚СЂРµ
 	headxpos = mapwidth / 2;
 	headypos = mapheight / 2;
 	map[headxpos + headypos * mapwidth] = 1;
 
-	// Верхняя и нижняя стенки
+	// Р’РµСЂС…РЅСЏСЏ Рё РЅРёР¶РЅСЏСЏ СЃС‚РµРЅРєРё
 	for (int x = 0; x < mapwidth; ++x) {
 		map[x] = -1;
 		map[x + (mapheight - 1) * mapwidth] = -1;
 	}
 
-	// Правая и левая стенки
+	// РџСЂР°РІР°СЏ Рё Р»РµРІР°СЏ СЃС‚РµРЅРєРё
 	for (int y = 0; y < mapheight; y++) {
 		map[0 + y * mapwidth] = -1;
 		map[(mapwidth - 1) + y * mapwidth] = -1;
 	}
-	// Размещение первого фрукта
+	// Р Р°Р·РјРµС‰РµРЅРёРµ РїРµСЂРІРѕРіРѕ С„СЂСѓРєС‚Р°
 	generateFood();
 }
 
-// Отрисовка карты
+// РћС‚СЂРёСЃРѕРІРєР° РєР°СЂС‚С‹
 void printMap()
 {
 	for (int x = 0; x < mapwidth; ++x) {
@@ -286,17 +286,17 @@ void printMap()
 	}
 }
 
-// Возвращает символ для отображения из значения карты
+// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРёРјРІРѕР» РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РёР· Р·РЅР°С‡РµРЅРёСЏ РєР°СЂС‚С‹
 char getMapValue(int value)
 {
-	if (value > 0) return 'o'; // Символ Змеи
+	if (value > 0) return 'o'; // РЎРёРјРІРѕР» Р—РјРµРё
 
 	switch (value) {
 
 	case -1: 
-		return 'X'; // Символ Стены
+		return 'X'; // РЎРёРјРІРѕР» РЎС‚РµРЅС‹
 	case -2: 
-		return 'O'; // Символ Фрукта
+		return 'O'; // РЎРёРјРІРѕР» Р¤СЂСѓРєС‚Р°
 	}
 	return ' ';
 }
