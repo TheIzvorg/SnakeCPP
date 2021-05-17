@@ -62,6 +62,7 @@ int main()
 	switch (choise)
 	{
 		case 1: 
+			system("CLS");
 			run();
 			break;
 		case 2: 
@@ -153,7 +154,7 @@ void run()
 		//Обновление карты
 		update();
 		//Чистилка как чистилка ничего особенного 
-		clearScreen();
+		//clearScreen();
 		//Вывод карты на экран
 		printMap();
 		//Таймер на 0.04 секунды что бы была плавность
